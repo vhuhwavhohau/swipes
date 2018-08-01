@@ -1,14 +1,63 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar class="navbar" >
     <ion-title>
-      Ionic Blank
+      ToDo Task
     </ion-title>
+    
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content >
+
+  <ion-slides>
+    <ion-slide>
+      <h1>Slide 1</h1>
+    
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of list">
+          <ion-item>
+            {{item.variable}}
+          </ion-item>
+ 
+         
+          <ion-item-options side="left">
+            <button ion-button (click)="Edit(item)">Edit</button> 
+            <button ion-button color="danger" (click)="delete(item.variable)">Delete</button>
+          </ion-item-options>
+      
+          <ion-item-options side="right">
+            <button ion-button (click)="unread(item)">Unread</button>
+          </ion-item-options>
+        </ion-item-sliding>
+</ion-list>
+</ion-slide>
+     
+        <ion-slide>
+          <h1>Slide 2</h1>
+            <p>hi dee</p>
+
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 3</h1>
+        </ion-slide>
+      </ion-slides>
+
+
+
+
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+        
+      </ion-refresher>
+  
+
+  
+  
+
+     
 </ion-content>
